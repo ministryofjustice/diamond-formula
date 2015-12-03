@@ -1,6 +1,7 @@
 {% set os_map = salt['grains.filter_by']({
     'Debian': {
         'config': '/etc/diamond/diamond.conf',
+        'configs_dir': '/etc/diamond/configs/',
         'collectors_dir': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
         'handlers_path': '/usr/local/share/diamond/handlers/',
@@ -11,6 +12,7 @@
     },
     'RedHat': {
         'config': '/etc/diamond/diamond.conf',
+        'configs_dir': '/etc/diamond/configs/',
         'collectors_dir': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
         'handlers_path': '/usr/local/share/diamond/handlers/',
@@ -21,6 +23,7 @@
     },
     'FreeBSD': {
         'config': '/etc/diamond/diamond.conf',
+        'configs_dir': '/etc/diamond/configs/',
         'collectors_dir': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
         'handlers_path': '/usr/local/share/diamond/handlers/',
@@ -34,23 +37,35 @@
 {# Settings dictionary with default values #}
 {% set default_settings = {
     'diamond': {
-        'handlers': 'diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler',
-         'handler': {
+    	'handlers': 'diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler, diamond.handler.cloudwatch.cloudwatchHandler',
+        'handler': {
             'graphite': {
+            	'enabled': False,
                 'host': 'localhost',
-                'port': 2003
+                'port': 2003,
+                'module': 'diamond.handler.graphite.GraphiteHandler'
+            },
+            'cloudwatch': {
+              'enabled': False,
+              'region': 'eu-west-1',
+              'module': 'diamond.handler.cloudwatch.cloudwatchHandler'
             }
         },
+        'path_prefix': 'servers',
+        'path_suffix': '',        
         'collectors': {
             'rabbitmq': {
+                'enabled': False,
                 'host': 'localhost',
                 'port': 55672
             },
             'elasticsearch': {
+                'enabled': False,
                 'host': 'localhost',
                 'port': 9200
             },
             'redis': {
+                'enabled': False,
                 'host': 'localhost',
                 'port': 6379
             }
