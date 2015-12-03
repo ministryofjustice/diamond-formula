@@ -5,7 +5,7 @@
     - source: salt://diamond/files/init.d/diamond
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
-    - mode: 644
+    - mode: 755
     - template: jinja
     - watch_in:
       - service: diamond-service
