@@ -1,0 +1,62 @@
+{% set os_map = salt['grains.filter_by']({
+    'Debian': {
+        'config': '/etc/diamond/diamond.conf',
+        'collectors_dir': '/etc/diamond/collectors/',
+        'pkg': 'diamond',
+        'service': 'collectd',
+        'user': 'root',
+        'group': 'root',
+    },
+    'RedHat': {
+        'config': '/etc/diamond/diamond.conf',
+        'collectors_dir': '/etc/diamond/collectors/',
+        'pkg': 'diamond',
+        'service': 'collectd',
+        'user': 'root',
+        'group': 'root',
+    },
+    'FreeBSD': {
+        'config': '/etc/diamond/diamond.conf',
+        'collectors_dir': '/etc/diamond/collectors/',
+        'pkg': 'diamond',
+        'service': 'collectd',
+        'user': 'root',
+        'group': 'wheel',
+    },
+}, merge=salt['pillar.get']('diamond:lookup')) %}
+
+{# Settings dictionary with default values #}
+{% set default_settings = {
+    'diamond': {
+        'handlers': [
+            'diamond.handler.graphite.GraphiteHandler',
+            'diamond.handler.archive.ArchiveHandler'
+         ],
+         'handler': {
+            'graphite': {
+                'host': 'localhost',
+                'port': 2003
+            }
+        },
+        'collectors': {
+            'rabbitmq': {
+                'host': 'localhost',
+                'port': 55672
+            },
+            'elasticsearch': {
+                'host': 'localhost',
+                'port': 9200
+            },
+            'redis': {
+                'host': 'localhost',
+                'port': 6379
+            }
+        }
+    }
+} %}
+
+{# Merge os_map into settings dictionary #}
+{% do default_settings.diamond.update(os_map) %}
+
+{# Update settings defaults from pillar data #}
+{% set diamond_settings = salt['pillar.get']('diamond', default=default_settings.diamond, merge=True) %}
