@@ -28,10 +28,7 @@
 {# Settings dictionary with default values #}
 {% set default_settings = {
     'diamond': {
-        'handlers': [
-            'diamond.handler.graphite.GraphiteHandler',
-            'diamond.handler.archive.ArchiveHandler'
-         ],
+        'handlers': 'diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler',
          'handler': {
             'graphite': {
                 'host': 'localhost',

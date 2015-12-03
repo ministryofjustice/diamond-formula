@@ -11,7 +11,6 @@
       - service: diamond-service
 
 /var/log/diamond:
-{{ diamond_settings.collectors_dir }}:
   file.directory:
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
@@ -26,4 +25,4 @@ diamond-service:
     - name: {{ diamond_settings.service }}
     - enable: True
     - require:
-      - pkg: {{ diamond_settings.pkg }}
+      - pip: {{ diamond_settings.pkg }}
