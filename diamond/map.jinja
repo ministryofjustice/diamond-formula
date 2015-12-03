@@ -57,12 +57,16 @@
             'rabbitmq': {
                 'enabled': False,
                 'host': 'localhost',
-                'port': 55672
+                'port': 55672,
+                'user': 'guest',
+                'password': 'guest',
+                'cluster': False
             },
             'elasticsearch': {
                 'enabled': False,
                 'host': 'localhost',
-                'port': 9200
+                'port': 9200,
+             	'cluster': False
             },
             'redis': {
                 'enabled': False,
