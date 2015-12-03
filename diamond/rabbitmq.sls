@@ -5,7 +5,7 @@ include:
 
 {{ diamond_settings.collectors_dir }}/RabbitMQCollector.conf:
   file.managed:
-    - source: salt://collectd/files/collectors/RabbitMQCollector.conf
+    - source: salt://diamond/files/collectors/RabbitMQCollector.conf
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
     - mode: 644

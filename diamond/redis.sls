@@ -5,7 +5,7 @@ include:
 
 {{ diamond_settings.collectors_dir }}/RedisCollector.conf:
   file.managed:
-    - source: salt://collectd/files/collectors/RedisCollector.conf
+    - source: salt://diamond/files/collectors/RedisCollector.conf
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
     - mode: 644

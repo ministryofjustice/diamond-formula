@@ -1,8 +1,8 @@
 {% from "diamond/map.jinja" import diamond_settings with context %}
 
-/etc/init.d/diamond:
+/etc/init/diamond.conf:
   file.managed:
-    - source: salt://diamond/files/init.d/diamond
+    - source: salt://diamond/files/init/diamond.conf
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
     - mode: 755

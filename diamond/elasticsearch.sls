@@ -5,7 +5,7 @@ include:
 
 {{ diamond_settings.collectors_dir }}/ElasticSearchCollector.conf:
   file.managed:
-    - source: salt://collectd/files/collectors/ElasticSearchCollector.conf
+    - source: salt://diamond/files/collectors/ElasticSearchCollector.conf
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
     - mode: 644
