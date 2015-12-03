@@ -4,7 +4,7 @@ include:
   - diamond.service
 
 diamond:
-  pkg.installed:
+  pip.installed:
     - name: {{ diamond_settings.pkg }}
     {%- if diamond_settings.pkg_version is defined and diamond_settings.pkg_version %}
     - version: '{{ diamond_settings.pkg_version }}'
