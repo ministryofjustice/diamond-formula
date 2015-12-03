@@ -20,7 +20,7 @@ diamond:
     - watch_in:
       - service: diamond-service
 
-{{ diamond_settings.configs_dir }}:
+{{ diamond_settings.collectors_dir }}:
   file.directory:
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
