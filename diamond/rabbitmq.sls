@@ -3,7 +3,7 @@
 include:
   - diamond
 
-{{ diamond_settings.collectors_dir }}/RabbitMQCollector.conf:
+{{ diamond_settings.collectors_config_path }}/RabbitMQCollector.conf:
   file.managed:
     - source: salt://diamond/files/collectors/RabbitMQCollector.conf
     - user: {{ diamond_settings.user }}

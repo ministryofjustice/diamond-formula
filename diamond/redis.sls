@@ -3,7 +3,7 @@
 include:
   - diamond
 
-{{ diamond_settings.collectors_dir }}/RedisCollector.conf:
+{{ diamond_settings.collectors_config_path }}/RedisCollector.conf:
   file.managed:
     - source: salt://diamond/files/collectors/RedisCollector.conf
     - user: {{ diamond_settings.user }}

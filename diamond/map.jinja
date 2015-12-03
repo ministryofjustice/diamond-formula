@@ -2,9 +2,9 @@
     'Debian': {
         'config': '/etc/diamond/diamond.conf',
         'configs_dir': '/etc/diamond/configs/',
-        'collectors_dir': '/etc/diamond/collectors/',
+        'collectors_config_path': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
-        'handlers_path': '/usr/local/share/diamond/handlers/',
+        'handlers_config_path': '/etc/diamond/handlers/',
         'pkg': 'diamond',
         'service': 'diamond',
         'user': 'root',
@@ -13,9 +13,9 @@
     'RedHat': {
         'config': '/etc/diamond/diamond.conf',
         'configs_dir': '/etc/diamond/configs/',
-        'collectors_dir': '/etc/diamond/collectors/',
+        'collectors_config_path': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
-        'handlers_path': '/usr/local/share/diamond/handlers/',
+        'handlers_config_path': '/etc/diamond/handlers/',
         'pkg': 'diamond',
         'service': 'diamond',
         'user': 'root',
@@ -24,9 +24,9 @@
     'FreeBSD': {
         'config': '/etc/diamond/diamond.conf',
         'configs_dir': '/etc/diamond/configs/',
-        'collectors_dir': '/etc/diamond/collectors/',
+        'collectors_config_path': '/etc/diamond/collectors/',
         'collectors_path': '/usr/local/share/diamond/collectors/',
-        'handlers_path': '/usr/local/share/diamond/handlers/',
+        'handlers_config_path': '/etc/diamond/handlers/',
         'pkg': 'diamond',
         'service': 'diamond',
         'user': 'root',
@@ -37,7 +37,7 @@
 {# Settings dictionary with default values #}
 {% set default_settings = {
     'diamond': {
-    	'handlers': 'diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler, diamond.handler.cloudwatch.cloudwatchHandler',
+    	'handlers': 'diamond.handler.cloudwatch.cloudwatchHandler',
         'handler': {
             'graphite': {
             	'enabled': False,

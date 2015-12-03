@@ -20,7 +20,7 @@ diamond:
     - watch_in:
       - service: diamond-service
 
-{{ diamond_settings.collectors_dir }}:
+{{ diamond_settings.collectors_config_path }}:
   file.directory:
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
@@ -39,3 +39,14 @@ diamond:
     - makedirs: True
     - require_in:
       - service: diamond-service
+
+{{ diamond_settings.handlers_config_path }}:
+ file.directory:
+    - user: {{ diamond_settings.user }}
+    - group: {{ diamond_settings.group }}
+    - dir_mode: 755
+    - file_mode: 644
+    - makedirs: True
+    - require_in:
+      - service: diamond-service
+      
