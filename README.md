@@ -5,12 +5,32 @@ A salt formula that installs and configures [python-diamond](https://github.com/
 -------------
 ### Contents
 
+##### 1. [IAM Policy](#iam-policy) 
+
+##### 2. [Example Pillar](#example-pillar)
 
 --------------- 
-### Usage
+### IAM Policy
+
+	{
+	  "Statement": [
+	    {
+	      "Action": [
+	        "cloudwatch:GetMetricStatistics",
+	        "cloudwatch:ListMetrics",
+	        "cloudwatch:PutMetricData",
+	        "ec2:DescribeTags"
+	      ],
+	      "Effect": "Allow",
+	      "Resource": "*"
+	    }
+	  ]
+	}
 
 
-### Example
+
+
+### Example Pillar
 
 	   diamond:
 	      handlers:

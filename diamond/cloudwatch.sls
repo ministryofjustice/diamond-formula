@@ -3,9 +3,9 @@
 include:
   - diamond
 
-{{ diamond_settings.collectors_config_path }}/RabbitMQCollector.conf:
+{{ diamond_settings.handlers_config_path }}/cloudwatch.conf:
   file.managed:
-    - source: salt://diamond/files/collectors/RabbitMQCollector.conf
+    - source: salt://diamond/files/handlers/cloudwatch.conf
     - user: {{ diamond_settings.user }}
     - group: {{ diamond_settings.group }}
     - mode: 644

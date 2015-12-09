@@ -3,7 +3,7 @@
 include:
   - diamond
 
-{{ diamond_settings.collectors_dir }}/ElasticSearchCollector.conf:
+{{ diamond_settings.collectors_config_path }}/ElasticSearchCollector.conf:
   file.managed:
     - source: salt://diamond/files/collectors/ElasticSearchCollector.conf
     - user: {{ diamond_settings.user }}
