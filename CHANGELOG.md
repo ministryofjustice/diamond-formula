@@ -1,3 +1,8 @@
+v0.0.3
+* Fix up handlers config dirs
+* Add rabbitmq and elasticsearch collector configs
+* Add cloudwatch handler config
+
 v0.0.2
 
 * Move to upstart service
